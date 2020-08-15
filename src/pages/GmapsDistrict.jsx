@@ -1,6 +1,7 @@
+/* global google */
 import React, { Component } from 'react';
 import locDetails from '../data/loc-details';
-import { GoogleMap, LoadScript, Marker, Polyline, InfoWindow } from '@react-google-maps/api';
+import { GoogleMap, Marker, Polyline, InfoWindow, HeatmapLayer} from '@react-google-maps/api';
 
 const containerStyle = {
   width: '100%',
@@ -117,9 +118,6 @@ class GmapsDistrict extends Component {
 		const mapCenter = this.minMaxLatAndLng(locDetails.result);
 
 		return (
-			<LoadScript
-			  googleMapsApiKey="AIzaSyAR6PhdQK_gv4C2aTeHCaADwCsyn_wWKI8"
-			>
 			  <GoogleMap
 				mapContainerStyle={containerStyle}
 				center={mapCenter}
@@ -156,8 +154,18 @@ class GmapsDistrict extends Component {
 				<Polyline
 					path={this.state.coords}
 				/>
+				<HeatmapLayer
+					// optional
+					// onLoad={onLoad}
+					// optional
+					// onUnmount={onUnmount}
+					// required
+					data={[
+						new google.maps.LatLng(-31.939349, 115.966480),
+						]}
+				/>
+				<></>
 			  </GoogleMap>
-			</LoadScript>
 		  );
 	}
 }
