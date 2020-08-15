@@ -5,13 +5,13 @@ Brett Osler (Perth, AUS)
 
 Małgorzata Ginalska (Krakow, POL)
 
-Sachi Grannan (Gold Coast, AUS)
+Sachi Grannan (Sunshine Coast, AUS)
 
 Mahesh Samaradiwakara (Melbourne, AUS)
 
 Luke Sy (Sydney, AUS) 
 
-Chilumba
+Chilumba Machona (Perth, AUS)
 
 ## Mentor/s: 
 Western Australian from:@Justin - WA Electoral Commission Mentor
