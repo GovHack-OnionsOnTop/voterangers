@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import locDetails from './data/loc-details';
+import locDetails from '../data/loc-details';
 import { withGoogleMap, GoogleMap, Marker, Polyline, InfoWindow } from "react-google-maps";
 
 const InitialMap = withGoogleMap(props => {

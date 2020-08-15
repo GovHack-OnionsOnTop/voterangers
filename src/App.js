@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import GmapsSelected from "./GmapsSelected";
-import YourCandidates from "./YourCandidates";
-import ElectionCommitments from "./ElectionCommitments";
-import WhereToVote from "./WhereToVote";
-import VoterSafety from "./VoterSafety";
-import WhenToVote from "./WhenToVote";
+import GmapsSelected from "./pages/GmapsSelected";
+import YourCandidates from "./pages/YourCandidates";
+import ElectionCommitments from "./pages/ElectionCommitments";
+import WhereToVote from "./pages/WhereToVote";
+import VoterSafety from "./pages/VoterSafety";
+import WhenToVote from "./pages/WhenToVote";
 import * as _ from "lodash";
 import "./App.css";
-
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
