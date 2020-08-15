@@ -104,9 +104,9 @@ class App extends Component {
           <ul class="navbar-nav ml-auto">
           <button type="button" class={"btn btn-outline-success " + (this.state.selected === 1 ? 'active' : '')} onClick={this.gmapsSelected}>Home</button>	&nbsp;	&nbsp;
           <button type="button" class={"btn btn-outline-success " + (this.state.selected === 2 ? 'active' : '')} onClick={this.yourCandidates}>Your Candidates</button>	&nbsp;	&nbsp;
-          <button type="button" class={"btn btn-outline-success " + (this.state.selected === 3 ? 'active' : '')} onClick={this.electionCommitments}>Election Commitments</button>	&nbsp;	&nbsp;
+          {/* <button type="button" class={"btn btn-outline-success " + (this.state.selected === 3 ? 'active' : '')} onClick={this.electionCommitments}>Election Commitments</button>	&nbsp;	&nbsp; */}
           <button type="button" class={"btn btn-outline-success " + (this.state.selected === 4 ? 'active' : '')} onClick={this.whereToVote}>Where To Vote</button>	&nbsp;	&nbsp;
-          <button type="button" class={"btn btn-outline-success " + (this.state.selected === 5 ? 'active' : '')} onClick={this.whenToVote}>When To Vote</button>	&nbsp;	&nbsp;
+          <button type="button" class={"btn btn-outline-success " + (this.state.selected === 5 ? 'active' : '')} onClick={this.whenToVote}>How To Vote</button>	&nbsp;	&nbsp;
           <button type="button" class={"btn btn-outline-success " + (this.state.selected === 6 ? 'active' : '')} onClick={this.voterSafety}>Voter Safety</button>	&nbsp;	&nbsp;
           </ul>
           </div>
