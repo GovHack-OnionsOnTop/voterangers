@@ -12,7 +12,7 @@ const InitialMap = withGoogleMap(props => {
 				scrollwheel: false,
 				mapTypeControl: false,
       	draggable: true,
-      	scaleControl: false,
+      	scaleControl: true,
 				mapTypeId: 'roadmap'
 			}}
 			
@@ -52,7 +52,7 @@ const InitialMap = withGoogleMap(props => {
 	)
 });
 
-class MapWithStops extends Component {
+class GmapsSelected extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -178,4 +178,4 @@ class MapWithStops extends Component {
 	}
 }
 
-export default MapWithStops;
+export default GmapsSelected;
