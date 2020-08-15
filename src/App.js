@@ -76,7 +76,7 @@ class App extends Component {
 
   render() {
     let content;
-    if (this.state.type === "gmapsSelected") content = <GmapsDistrict />;
+    if (this.state.type === "gmapsSelected") content = <WhereToVote />;
     else if (this.state.type === "yourCandidates") content = <YourCandidates />;
     else if (this.state.type === "electionCommitments") content = <ElectionCommitments />;
     else if (this.state.type === "whereToVote") content = <WhereToVote />;
