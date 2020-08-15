@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import GmapsSelected from "./pages/GmapsSelected";
+import GmapsDistrict from "./pages/GmapsDistrict";
 import YourCandidates from "./pages/YourCandidates";
 import ElectionCommitments from "./pages/ElectionCommitments";
 import WhereToVote from "./pages/WhereToVote";
@@ -75,7 +76,7 @@ class App extends Component {
 
   render() {
     let content;
-    if (this.state.type === "gmapsSelected") content = <GmapsSelected />;
+    if (this.state.type === "gmapsSelected") content = <GmapsDistrict />;
     else if (this.state.type === "yourCandidates") content = <YourCandidates />;
     else if (this.state.type === "electionCommitments") content = <ElectionCommitments />;
     else if (this.state.type === "whereToVote") content = <WhereToVote />;
