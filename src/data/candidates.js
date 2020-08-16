@@ -62,6 +62,8 @@ const candidates = [
     Surname: "LIM",
     ChristianName: "Ken Ivan",
     Party: "Australian Christians",
+    ProfilePhotoLink:
+      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fheadtopics.com%2Fsg%2Fivan-lim-saga-pap-s-masagos-says-ge-is-time-for-people-to-redeem-themselves-13926812&psig=AOvVaw0_RVOwGkqRPz4L4qzY2U1e&ust=1597625757053000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOCMj_HBnusCFQAAAAAdAAAAABAD",
   },
   {
     Surname: "EVANGEL",
