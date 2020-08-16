@@ -13,6 +13,7 @@ import candidates from "../data/candidates.js";
 import CandidateCard from "../components/CandidateCard.jsx";
 import elecSummary from '../data/electoral-summary';
 
+
 const containerStyle = {
   width: "100%",
   height: "70%",
@@ -233,10 +234,7 @@ class WhereToVote extends Component {
                 onLoad={this.onSearchBarLoad}
                 onPlaceChanged={this.onPlacesChanged}
               >
-                <input
-                  type="text"
-                  placeholder="Enter your location"
-                />
+                <input type="text" placeholder="Enter your location" />
               </Autocomplete>
             </div>
 
