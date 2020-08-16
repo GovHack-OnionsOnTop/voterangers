@@ -1,4 +1,5 @@
 /* global google */
+import _ from 'lodash';
 import React, { Component } from "react";
 import locDetails from "../data/loc-details";
 import {
@@ -14,7 +15,6 @@ import candidates from "../data/candidates.js";
 import CandidateCard from "../components/CandidateCard.jsx";
 import ElectoralSummaryBlock from "../components/ElectoralSummaryBlock.jsx";
 import elecSummary from '../data/electoral-summary';
-import ElectoralSummary from "../components/ElectoralSummaryBlock";
 
 const containerStyle = {
   width: "100%",
@@ -51,6 +51,8 @@ class WhereToVote extends Component {
       showDistrict: true,
       showPrecinct: true,
       showCovidSpot: true,
+      showOPP: true,
+      showMPP: true,
       map: null,
       area: "area1",
       elecSummary: null,
@@ -68,6 +70,8 @@ class WhereToVote extends Component {
     this.handleShowHideCOVIDHotspots = this.handleShowHideCOVIDHotspots.bind(
       this
     );
+    this.handleShowHideOPP = this.handleShowHideOPP.bind(this);
+    this.handleShowHideMPP = this.handleShowHideMPP.bind(this);
 
     this.onSearchBarLoad = this.onSearchBarLoad.bind(this);
     this.onPlacesChanged = this.onPlacesChanged.bind(this);
@@ -156,6 +160,22 @@ class WhereToVote extends Component {
       showCovidSpot: newState,
     });
     console.log("Show COVID Hotspot?", newState);
+  }
+
+  handleShowHideOPP() {
+    var newState = !this.state.showOPP;
+    this.setState({
+      showOPP: newState,
+    });
+    console.log("Show Ordinary Voting Place?", newState);
+  }
+
+  handleShowHideMPP() {
+    var newState = !this.state.showMPP;
+    this.setState({
+      showMPP: newState,
+    });
+    console.log("Show Mobile Voting Place?", newState);
   }
 
   minMaxLatAndLng(locDetails) {
@@ -257,12 +277,28 @@ class WhereToVote extends Component {
                 {" "}
                 {!this.state.showDistrict ? "Show" : "Hide"} Districts{" "}
               </button>
+              {/* 
               <button
                 className="btn-hide-Precincts"
                 onClick={this.handleShowHidePrecincts}
               >
                 {" "}
-                {!this.state.showPrecinct ? "Show" : "Hide"} Precincts{" "}
+                {!this.state.showPrecinct ? "Show" : "Hide"} Polling Place {" "}
+              </button>
+              */}
+              <button
+                className="btn-hide-OPP"
+                onClick={this.handleShowHideOPP}
+              >
+                {" "}
+                {!this.state.showOPP ? "Show" : "Hide"} Ordinary Polling Place {" "}
+              </button>
+              <button
+                className="btn-hide-MPP"
+                onClick={this.handleShowHideMPP}
+              >
+                {" "}
+                {!this.state.showMPP ? "Show" : "Hide"} Mobile Polling Place {" "}
               </button>
               <button
                 className="btn-hide-Hotspot"
@@ -287,8 +323,43 @@ class WhereToVote extends Component {
                 zoom={7}
                 onLoad={this.onMapLoad}
               >
-                {this.state.showPrecinct &&
-                  this.state.markers.map((marker, index) => (
+                {this.state.showPrecinct && this.state.showOPP && _.filter(this.state.markers,
+                  (x) => x.infoContent.studentsCount == "Ordinary Polling Place")
+                  .map((marker, index) => (
+                    <Marker
+                      key={index}
+                      position={marker.position}
+                      onClick={() => this.handleMarkerClick(marker)}
+                      onMouseOver={() => this.handleMarkerHover(marker)}
+                      onMouseOut={() => this.handleMarkerHide(marker)}
+                    >
+                      {marker.showInfo && (
+                        <InfoWindow
+                          onCloseClick={() => this.handleMarkerClose(marker)}
+                        >
+                          <div id="info-window">
+                            <div>Type: {marker.infoContent.studentsCount}</div>
+                            <div>Address: {marker.infoContent.routesCount}</div>
+                          </div>
+                        </InfoWindow>
+                      )}
+
+                      {marker.hover && (
+                        <InfoWindow
+                          onCloseClick={() => this.handleMarkerClose(marker)}
+                        >
+                          <div id="info-window">
+                            <div>
+                              Venue: <em>{marker.infoContent.name}</em>
+                            </div>
+                          </div>
+                        </InfoWindow>
+                      )}
+                    </Marker>
+                  ))}
+                  {this.state.showPrecinct && this.state.showMPP && _.filter(this.state.markers,
+                  (x) => x.infoContent.studentsCount == "Mobile Polling Place")
+                  .map((marker, index) => (
                     <Marker
                       key={index}
                       position={marker.position}
