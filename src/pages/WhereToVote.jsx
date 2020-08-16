@@ -5,7 +5,7 @@ import { GoogleMap, Marker, Polyline, InfoWindow, HeatmapLayer} from '@react-goo
 
 const containerStyle = {
   width: '100%',
-  height: '800px'
+  height: '100%'
 };
 
 const center = {
