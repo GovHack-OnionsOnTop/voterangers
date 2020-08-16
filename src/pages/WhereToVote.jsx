@@ -55,7 +55,9 @@ class WhereToVote extends Component {
 
     this.handleShowHideDistricts = this.handleShowHideDistricts.bind(this);
     this.handleShowHidePrecincts = this.handleShowHidePrecincts.bind(this);
-    this.handleShowHideCOVIDHotspots = this.handleShowHideCOVIDHotspots.bind(this);
+    this.handleShowHideCOVIDHotspots = this.handleShowHideCOVIDHotspots.bind(
+      this
+    );
 
     this.onSearchBarLoad = this.onSearchBarLoad.bind(this);
     this.onPlacesChanged = this.onPlacesChanged.bind(this);
@@ -160,9 +162,11 @@ class WhereToVote extends Component {
     );
 
     map.data.addListener("click", function (event) {
+      const area = event.feature.getProperty("boundary_id") % 2;
+      // setArea();
       console.log(
         event.feature.getProperty("boundary_id") +
-          " " +
+          " " + area+
           event.feature.getProperty("name")
       );
     });
@@ -172,7 +176,7 @@ class WhereToVote extends Component {
     this.setState({
       map: map,
     });
-  }
+  };
 
   onSearchBarLoad(ref) {
     this.searchBox = ref;
@@ -183,7 +187,7 @@ class WhereToVote extends Component {
     console.log(results);
     this.state.map.setCenter(results[0].geometry.location);
     this.state.map.setZoom(10);
-  };
+  }
 
   render() {
     const mapCenter = this.minMaxLatAndLng(locDetails.result);
@@ -222,9 +226,7 @@ class WhereToVote extends Component {
             >
               <StandaloneSearchBox
                 onLoad={this.onSearchBarLoad}
-                onPlacesChanged={
-                  this.onPlacesChanged
-                }
+                onPlacesChanged={this.onPlacesChanged}
               >
                 <input
                   type="text"
@@ -243,7 +245,7 @@ class WhereToVote extends Component {
                     position: "absolute",
                     top: "3%",
                     left: "50%",
-                    marginLeft: "-120px"
+                    marginLeft: "-120px",
                   }}
                 />
               </StandaloneSearchBox>
