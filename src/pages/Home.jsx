@@ -222,7 +222,7 @@ class WhereToVote extends Component {
     const mapCenter = this.minMaxLatAndLng(locDetails.result);
 
     return (
-      <div style={{ marginTop: 50 }}>
+      <div style={{ marginTop: 100 }}>
         <h3>Coming Elections</h3>
         <div className="card">
           <div className="card-body">
