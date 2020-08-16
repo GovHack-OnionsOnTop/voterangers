@@ -5,7 +5,7 @@ import { GoogleMap, Marker, Polyline, InfoWindow, HeatmapLayer} from '@react-goo
 
 const containerStyle = {
   width: '100%',
-  height: '800px'
+  height: '100%'
 };
 
 const center = {
@@ -35,12 +35,20 @@ class WhereToVote extends Component {
         };
       }),
       showMap: true,
+      showDistrict: true,
+      showPrecinct: true,
+      showCovidSpot: true,
+      map: null,
     };
 
     this.handleMarkerClick = this.handleMarkerClick.bind(this);
     this.handleMarkerClose = this.handleMarkerClose.bind(this);
     this.handleMarkerHover = this.handleMarkerHover.bind(this);
     this.handleMarkerHide = this.handleMarkerHide.bind(this);
+
+    this.handleShowHideDistricts = this.handleShowHideDistricts.bind(this);
+    this.handleShowHidePrecincts = this.handleShowHidePrecincts.bind(this);
+    this.handleShowHideCOVIDHotspots = this.handleShowHideCOVIDHotspots.bind(this);
   }
 
   handleMarkerClick(targetMarker) {
@@ -101,6 +109,31 @@ class WhereToVote extends Component {
     });
   }
 
+  handleShowHideDistricts() {
+    var newState = !this.state.showDistrict;
+    this.setState({
+      showDistrict: newState,
+    });
+    this.state.map.data.setStyle({visible: newState});
+    console.log('Show Districts?', newState);
+  }
+
+  handleShowHidePrecincts() {
+    var newState = !this.state.showPrecinct;
+    this.setState({
+      showPrecinct: newState,
+    });
+    console.log('Show Precinct?', newState);
+  }
+
+  handleShowHideCOVIDHotspots() {
+    var newState = !this.state.showCovidSpot;
+    this.setState({
+      showCovidSpot: newState,
+    });
+    console.log('Show COVID Hotspot?', newState);
+  }
+
   minMaxLatAndLng(locDetails) {
     const listOfLat = locDetails.map((obj) => obj.lat);
     const listOfLng = locDetails.map((obj) => obj.lng);
@@ -116,7 +149,13 @@ class WhereToVote extends Component {
 
 		map.data.addListener('click', function(event) {
 			console.log(event.feature.getProperty('boundary_id')+" "+event.feature.getProperty('name'));
-		});
+    });
+    
+    map.data.setStyle({visible: this.state.showDistrict});
+
+    this.setState({
+      map: map
+    });
   }
   
   render() {
@@ -132,7 +171,7 @@ class WhereToVote extends Component {
               zoom={7}
               onLoad={this.onMapLoad}
             >
-              {this.state.markers.map((marker, index) => (
+              {this.state.showPrecinct && this.state.markers.map((marker, index) => (
                 <Marker
                   key={index}
                   position={marker.position}
@@ -161,6 +200,7 @@ class WhereToVote extends Component {
                 </Marker>
               ))}
               <Polyline path={this.state.coords} />
+              {this.state.showCovidSpot && (
               <HeatmapLayer
                 // optional
                 // onLoad={onLoad}
@@ -170,8 +210,11 @@ class WhereToVote extends Component {
                 data={[
                   new google.maps.LatLng(-31.939349, 115.966480),
                   ]}
-              />
+              />)}
             </GoogleMap>
+                <button onClick={ this.handleShowHideDistricts }>  { !this.state.showDistrict ? "Show": "Hide"} Districts </button>
+            <button onClick={ this.handleShowHidePrecincts }>  { !this.state.showPrecinct ? "Show": "Hide"} Precincts </button>
+            <button onClick={ this.handleShowHideCOVIDHotspots }>  { !this.state.showCovidSpot ? "Show": "Hide"} COVID Hotspot </button>
           </div>
         )}
       </div>
