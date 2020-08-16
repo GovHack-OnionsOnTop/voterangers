@@ -7,11 +7,11 @@ import {
   Polyline,
   InfoWindow,
   HeatmapLayer,
+  StandaloneSearchBox,
   Autocomplete,
 } from "@react-google-maps/api";
 import candidates from "../data/candidates.js";
 import CandidateCard from "../components/CandidateCard.jsx";
-import elecSummary from '../data/electoral-summary';
 
 const containerStyle = {
   width: "100%",
@@ -49,7 +49,7 @@ class WhereToVote extends Component {
       showPrecinct: true,
       showCovidSpot: true,
       map: null,
-      state: "area1",
+      area: "area1",
     };
 
     this.handleMarkerClick = this.handleMarkerClick.bind(this);
@@ -166,18 +166,16 @@ class WhereToVote extends Component {
     );
 
     map.data.addListener("click", function (event) {
-      var buf = event.feature.getProperty("name").split(',')
-      var distKey = buf[0].trim().toLowerCase();
-      console.log(distKey, elecSummary[distKey]);
-      /*
       const boundary = event.feature.getProperty("boundary_id") % 2;
       const areaName = boundary === 0 ? "area1" : "area2";
+      console.log("WhereToVote -> onMapLoad -> areaName", areaName);
       this.setState = { area: areaName };
+      console.log(this.state.area);
       console.log(
         event.feature.getProperty("boundary_id") +
           " " +
           event.feature.getProperty("name")
-      );*/
+      );
     });
 
     map.data.setStyle({ visible: this.state.showDistrict });
@@ -294,6 +292,11 @@ class WhereToVote extends Component {
 
             <div class="album py-5 bg-light">
               <div class="container">
+                <div class="row">
+                  {candidates['area1'].map((candidate) => (
+                    <CandidateCard candidate={candidate}></CandidateCard>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
