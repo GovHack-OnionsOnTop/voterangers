@@ -13,6 +13,10 @@ Luke Sy (Sydney, AUS)
 
 Chilumba Machona (Perth, AUS)
 
+Navida Ahsan
+
+Liana Manescu
+
 ## Application
 You can check our app HERE https://master.d1dqj178y5rtze.amplifyapp.com/
 
