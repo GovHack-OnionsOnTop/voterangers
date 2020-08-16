@@ -7,11 +7,13 @@ import {
   Polyline,
   InfoWindow,
   HeatmapLayer,
+  StandaloneSearchBox,
+  Autocomplete,
 } from "@react-google-maps/api";
 
 const containerStyle = {
   width: "100%",
-  height: "100%",
+  height: "70%",
 };
 
 const center = {
@@ -54,9 +56,10 @@ class WhereToVote extends Component {
 
     this.handleShowHideDistricts = this.handleShowHideDistricts.bind(this);
     this.handleShowHidePrecincts = this.handleShowHidePrecincts.bind(this);
-    this.handleShowHideCOVIDHotspots = this.handleShowHideCOVIDHotspots.bind(
-      this
-    );
+    this.handleShowHideCOVIDHotspots = this.handleShowHideCOVIDHotspots.bind(this);
+
+    this.onSearchBarLoad = this.onSearchBarLoad.bind(this);
+    this.onPlacesChanged = this.onPlacesChanged.bind(this);
   }
 
   handleMarkerClick(targetMarker) {
@@ -170,6 +173,19 @@ class WhereToVote extends Component {
     this.setState({
       map: map,
     });
+  }
+
+  onSearchBarLoad(ref) {
+    this.searchBox = ref;
+    this.searchBox.setComponentRestrictions({'country': ['au']});
+
+  }
+
+  onPlacesChanged() {
+    var results = this.searchBox.getPlace();
+    // console.log(results);
+    this.state.map.setCenter(results.geometry.location);
+    this.state.map.setZoom(10);
   };
 
   render() {
@@ -207,6 +223,32 @@ class WhereToVote extends Component {
               zoom={7}
               onLoad={this.onMapLoad}
             >
+              <Autocomplete
+                onLoad={this.onSearchBarLoad}
+                onPlaceChanged={this.onPlacesChanged}
+              >
+                <input
+                  type="text"
+                  placeholder="Enter your location"
+                  style={{
+                    boxSizing: `border-box`,
+                    border: `1px solid transparent`,
+                    width: `40%`,
+                    height: `40px`,
+                    padding: `0 12px`,
+                    borderRadius: `3px`,
+                    boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+                    fontSize: `14px`,
+                    outline: `none`,
+                    textOverflow: `ellipses`,
+                    position: "absolute",
+                    top: "3%",
+                    left: "50%",
+                    marginLeft: "-20%"
+                  }}
+                />
+              </Autocomplete>
+
               {this.state.showPrecinct &&
                 this.state.markers.map((marker, index) => (
                   <Marker
