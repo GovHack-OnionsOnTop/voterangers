@@ -1,9 +1,4 @@
 /* global google */
-<<<<<<< HEAD
-import React, { Component } from 'react';
-import locDetails from '../data/loc-details';
-import { GoogleMap, Marker, Polyline, InfoWindow, HeatmapLayer, StandaloneSearchBox} from '@react-google-maps/api';
-=======
 import React, { Component } from "react";
 import locDetails from "../data/loc-details";
 import {
@@ -12,8 +7,8 @@ import {
   Polyline,
   InfoWindow,
   HeatmapLayer,
+  StandaloneSearchBox,
 } from "@react-google-maps/api";
->>>>>>> 34faf31f1b3ee2cb1707ab5309246b05c0776642
 
 const containerStyle = {
   width: "100%",
@@ -60,16 +55,10 @@ class WhereToVote extends Component {
 
     this.handleShowHideDistricts = this.handleShowHideDistricts.bind(this);
     this.handleShowHidePrecincts = this.handleShowHidePrecincts.bind(this);
-<<<<<<< HEAD
     this.handleShowHideCOVIDHotspots = this.handleShowHideCOVIDHotspots.bind(this);
 
     this.onSearchBarLoad = this.onSearchBarLoad.bind(this);
     this.onPlacesChanged = this.onPlacesChanged.bind(this);
-=======
-    this.handleShowHideCOVIDHotspots = this.handleShowHideCOVIDHotspots.bind(
-      this
-    );
->>>>>>> 34faf31f1b3ee2cb1707ab5309246b05c0776642
   }
 
   handleMarkerClick(targetMarker) {
@@ -193,7 +182,7 @@ class WhereToVote extends Component {
     var results = this.searchBox.getPlaces();
     console.log(results);
     this.state.map.setCenter(results[0].geometry.location);
-    this.state.map.setZoom(12);
+    this.state.map.setZoom(10);
   };
 
   render() {
@@ -243,8 +232,8 @@ class WhereToVote extends Component {
                   style={{
                     boxSizing: `border-box`,
                     border: `1px solid transparent`,
-                    width: `240px`,
-                    height: `32px`,
+                    width: `20%`,
+                    height: `40px`,
                     padding: `0 12px`,
                     borderRadius: `3px`,
                     boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
@@ -252,7 +241,7 @@ class WhereToVote extends Component {
                     outline: `none`,
                     textOverflow: `ellipses`,
                     position: "absolute",
-                    top: "90%",
+                    top: "3%",
                     left: "50%",
                     marginLeft: "-120px"
                   }}
