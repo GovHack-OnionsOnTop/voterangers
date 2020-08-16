@@ -15,6 +15,10 @@ import candidates from "../data/candidates.js";
 import CandidateCard from "../components/CandidateCard.jsx";
 import ElectoralSummaryBlock from "../components/ElectoralSummaryBlock.jsx";
 import elecSummary from '../data/electoral-summary';
+import Amplify, { Interactions } from 'aws-amplify';
+import { ChatBot, AmplifyTheme } from 'aws-amplify-react';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 
 const containerStyle = {
   width: "100%",
@@ -247,6 +251,15 @@ class WhereToVote extends Component {
 
     return (
       <div style={{ marginTop: 100 }}>
+        <ChatBot
+    title="More About Voting"
+    theme={myTheme}
+    botName="BookTrip_dev"
+    welcomeMessage="Welcome, how can I help you today?"
+    onComplete={this.handleComplete.bind(this)}
+    clearOnComplete={true}
+    conversationModeOn={false}
+/>
         <h3>Coming Elections</h3>
         <div className="card">
           <div className="card-body">
