@@ -9,7 +9,7 @@ const WhenToVote = () => {
       <br />
       <br />
       <br />
-      <h2>VotingEarly</h2>
+      <h3>Voting Early</h3>
       <div class="accordion" id="accordionExample">
         <div class="card">
           <div class="card-header" id="headingOne">
@@ -22,7 +22,7 @@ const WhenToVote = () => {
                 aria-expanded="true"
                 aria-controls="collapseOne"
               >
-                PostalVote
+                Postal Vote
               </button>
             </h2>
           </div>
@@ -55,7 +55,7 @@ const WhenToVote = () => {
                 aria-expanded="false"
                 aria-controls="collapseTwo"
               >
-                PollingBooth
+                Polling Booth
               </button>
             </h2>
           </div>
@@ -121,7 +121,7 @@ const WhenToVote = () => {
                 aria-expanded="false"
                 aria-controls="collapsefive"
               >
-                WAElectoralCommissionMobileVoting
+                WA Electoral Commission Mobile Voting
               </button>
             </h2>
           </div>
@@ -164,7 +164,7 @@ const WhenToVote = () => {
                 aria-expanded="false"
                 aria-controls="collapsesix"
               >
-                DriveIn
+                Drive-In
               </button>
             </h2>
           </div>
@@ -203,7 +203,7 @@ const WhenToVote = () => {
                 aria-expanded="false"
                 aria-controls="collapseseven"
               >
-                AudioLoop
+                Audio Loop
               </button>
             </h2>
           </div>
@@ -237,7 +237,7 @@ const WhenToVote = () => {
                 aria-expanded="false"
                 aria-controls="collapseEight"
               >
-                VoteEarlyEveryGeneralElection
+                Vote Early Every General Election
               </button>
             </h2>
           </div>
