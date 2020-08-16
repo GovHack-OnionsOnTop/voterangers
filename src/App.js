@@ -4,6 +4,7 @@ import ElectionCommitments from "./pages/ElectionCommitments";
 import WhereToVote from "./pages/WhereToVote";
 import VoterSafety from "./pages/VoterSafety";
 import WhenToVote from "./pages/WhenToVote";
+import Home from "./pages/Home";
 import * as _ from "lodash";
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -16,6 +17,7 @@ class App extends Component {
       title: "gmapsSelected",
       type: "gmapsSelected",
     };
+    this.gmapsSelected = this.gmapsSelected.bind(this);
     this.yourCandidates = this.yourCandidates.bind(this);
     this.whereToVote = this.whereToVote.bind(this);
     this.whenToVote = this.whenToVote.bind(this);
@@ -64,7 +66,7 @@ class App extends Component {
 
   render() {
     let content;
-    if (this.state.type === "gmapsSelected") content = <WhereToVote />;
+    if (this.state.type === "gmapsSelected") content = <Home />;
     else if (this.state.type === "yourCandidates") content = <YourCandidates />;
     else if (this.state.type === "whereToVote") content = <WhereToVote />;
     else if (this.state.type === "whenToVote") content = <WhenToVote />;

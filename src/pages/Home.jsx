@@ -292,6 +292,11 @@ class WhereToVote extends Component {
 
             <div class="album py-5 bg-light">
               <div class="container">
+                <div class="row">
+                  {candidates['area1'].map((candidate) => (
+                    <CandidateCard candidate={candidate}></CandidateCard>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
