@@ -13,6 +13,7 @@ import {
 import candidates from "../data/candidates.js";
 import CandidateCard from "../components/CandidateCard.jsx";
 
+
 const containerStyle = {
   width: "100%",
   height: "70%",
@@ -229,10 +230,7 @@ class WhereToVote extends Component {
                 onLoad={this.onSearchBarLoad}
                 onPlaceChanged={this.onPlacesChanged}
               >
-                <input
-                  type="text"
-                  placeholder="Enter your location"
-                />
+                <input type="text" placeholder="Enter your location" />
               </Autocomplete>
             </div>
 
@@ -289,8 +287,7 @@ class WhereToVote extends Component {
             </GoogleMap>
 
             <div class="album py-5 bg-light">
-              <div class="container">
-              </div>
+              <div class="container"></div>
             </div>
           </div>
         )}
