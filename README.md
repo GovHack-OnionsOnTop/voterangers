@@ -13,6 +13,9 @@ Luke Sy (Sydney, AUS)
 
 Chilumba Machona (Perth, AUS)
 
+## Application
+You can check our up HERE https://master.d1dqj178y5rtze.amplifyapp.com/
+
 ## Mentor/s: 
 Western Australian from:@Justin - WA Electoral Commission Mentor
 
