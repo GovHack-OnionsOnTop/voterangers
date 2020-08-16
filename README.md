@@ -18,7 +18,8 @@ Navida Ahsan
 Liana Manescu
 
 ## Application
-You can check our app :- https://master.d1dqj178y5rtze.amplifyapp.com/
+App :- https://master.d1dqj178y5rtze.amplifyapp.com/
+
 Demo :- https://www.youtube.com/watch?v=vYtQhz-ORXc
 
 ## Mentor/s: 
