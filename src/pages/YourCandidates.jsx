@@ -3,7 +3,7 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import candidates from "../data/candidates.js";
 import CandidateCard from "../components/CandidateCard.jsx";
 
-const YourCandidates = () => {
+const YourCandidates = (props) => {
   return (
     <div class="album py-5 bg-light">
       <div class="container">
