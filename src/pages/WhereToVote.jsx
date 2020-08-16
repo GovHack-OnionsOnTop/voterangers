@@ -8,6 +8,7 @@ import {
   InfoWindow,
   HeatmapLayer,
   StandaloneSearchBox,
+  Autocomplete,
 } from "@react-google-maps/api";
 
 const containerStyle = {
@@ -176,12 +177,14 @@ class WhereToVote extends Component {
 
   onSearchBarLoad(ref) {
     this.searchBox = ref;
+    this.searchBox.setComponentRestrictions({'country': ['au']});
+
   }
 
   onPlacesChanged() {
-    var results = this.searchBox.getPlaces();
-    console.log(results);
-    this.state.map.setCenter(results[0].geometry.location);
+    var results = this.searchBox.getPlace();
+    // console.log(results);
+    this.state.map.setCenter(results.geometry.location);
     this.state.map.setZoom(10);
   };
 
@@ -220,11 +223,9 @@ class WhereToVote extends Component {
               zoom={7}
               onLoad={this.onMapLoad}
             >
-              <StandaloneSearchBox
+              <Autocomplete
                 onLoad={this.onSearchBarLoad}
-                onPlacesChanged={
-                  this.onPlacesChanged
-                }
+                onPlaceChanged={this.onPlacesChanged}
               >
                 <input
                   type="text"
@@ -232,7 +233,7 @@ class WhereToVote extends Component {
                   style={{
                     boxSizing: `border-box`,
                     border: `1px solid transparent`,
-                    width: `20%`,
+                    width: `40%`,
                     height: `40px`,
                     padding: `0 12px`,
                     borderRadius: `3px`,
@@ -243,10 +244,10 @@ class WhereToVote extends Component {
                     position: "absolute",
                     top: "3%",
                     left: "50%",
-                    marginLeft: "-120px"
+                    marginLeft: "-20%"
                   }}
                 />
-              </StandaloneSearchBox>
+              </Autocomplete>
 
               {this.state.showPrecinct &&
                 this.state.markers.map((marker, index) => (
