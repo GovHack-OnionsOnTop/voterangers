@@ -1,5 +1,5 @@
 const candidates = {
-  1: [
+  area1: [
     {
       Surname: "CAREY",
       ChristianName: "John",
@@ -39,7 +39,7 @@ const candidates = {
         "https://www.abc.net.au/dat/news/elections/wa/2017/guide/photos/PERT_GRN_Milligan.jpg",
     },
   ],
-  2: [
+  area2: [
     {
       Surname: "MOLYNEUX",
       ChristianName: "Ian",
@@ -81,3 +81,5 @@ const candidates = {
     },
   ],
 };
+
+export default candidates;

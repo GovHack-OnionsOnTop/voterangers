@@ -8,7 +8,7 @@ const YourCandidates = (props) => {
     <div class="album py-5 bg-light">
       <div class="container">
         <div class="row">
-          {candidates.map((candidate) => (
+          {candidates.area1.map((candidate) => (
             <CandidateCard candidate={candidate}></CandidateCard>
           ))}
         </div>
