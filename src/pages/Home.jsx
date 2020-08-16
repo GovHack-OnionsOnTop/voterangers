@@ -12,6 +12,9 @@ import {
 } from "@react-google-maps/api";
 import candidates from "../data/candidates.js";
 import CandidateCard from "../components/CandidateCard.jsx";
+import ElectoralSummaryBlock from "../components/ElectoralSummaryBlock.jsx";
+import elecSummary from '../data/electoral-summary';
+import ElectoralSummary from "../components/ElectoralSummaryBlock";
 
 const containerStyle = {
   width: "100%",
@@ -50,7 +53,10 @@ class WhereToVote extends Component {
       showCovidSpot: true,
       map: null,
       area: "area1",
+      elecSummary: null,
     };
+
+    this.onMapLoad = this.onMapLoad.bind(this);
 
     this.handleMarkerClick = this.handleMarkerClick.bind(this);
     this.handleMarkerClose = this.handleMarkerClose.bind(this);
@@ -65,6 +71,8 @@ class WhereToVote extends Component {
 
     this.onSearchBarLoad = this.onSearchBarLoad.bind(this);
     this.onPlacesChanged = this.onPlacesChanged.bind(this);
+
+    this.onDistrictClickHandler = this.onDistrictClickHandler.bind(this);
   }
 
   handleMarkerClick(targetMarker) {
@@ -159,24 +167,37 @@ class WhereToVote extends Component {
     return { lat, lng };
   }
 
+  onDistrictClickHandler(event) {
+    var buf = event.feature.getProperty("name").split(',')
+    const distKey = buf[0].trim().toLowerCase();
+    const elecSumBuf = elecSummary[distKey];
+    console.log(distKey, elecSumBuf);
+
+
+    // const boundary = event.feature.getProperty("boundary_id") % 2;
+    // const areaName = boundary === 0 ? "area1" : "area2";
+    const areaName = (this.state.area === "area1") ? "area2" : "area1";
+
+    console.log("WhereToVote -> onMapLoad -> areaName", areaName); 
+    this.setState({ 
+      area: areaName,
+      distKey: distKey,
+      });
+    console.log(this.state.area);
+    console.log(
+      event.feature.getProperty("boundary_id") +
+        " " +
+        event.feature.getProperty("name")
+    );
+  }
+
   onMapLoad = (map) => {
     // console.log('map.data: ', map.data)
     map.data.loadGeoJson(
       "/StateElectoratesCurrentLGATE_069.simplified.geojson"
     );
 
-    map.data.addListener("click", function (event) {
-      const boundary = event.feature.getProperty("boundary_id") % 2;
-      const areaName = boundary === 0 ? "area1" : "area2";
-      console.log("WhereToVote -> onMapLoad -> areaName", areaName);
-      this.setState = { area: areaName };
-      console.log(this.state.area);
-      console.log(
-        event.feature.getProperty("boundary_id") +
-          " " +
-          event.feature.getProperty("name")
-      );
-    });
+    map.data.addListener("click", this.onDistrictClickHandler);
 
     map.data.setStyle({ visible: this.state.showDistrict });
 
@@ -307,12 +328,18 @@ class WhereToVote extends Component {
                   />
                 )}
               </GoogleMap>
-
+              <div class="album py-4">
+                { this.state.distKey && (
+                  <div class="row">
+                    <ElectoralSummaryBlock data={ elecSummary[this.state.distKey] }></ElectoralSummaryBlock>
+                  </div>
+                )}
+              </div>
               <div class="album py-4">
                 <h3> Your Candidates </h3>
                 <div class="container">
                   <div class="row">
-                    {candidates["area1"].map((candidate) => (
+                    {candidates[this.state.area].map((candidate) => (
                       <CandidateCard candidate={candidate}></CandidateCard>
                     ))}
                   </div>
