@@ -168,14 +168,14 @@ class WhereToVote extends Component {
     map.data.addListener("click", function (event) {
       const boundary = event.feature.getProperty("boundary_id") % 2;
       const areaName = boundary === 0 ? "area1" : "area2";
-      console.log("WhereToVote -> onMapLoad -> areaName", areaName);
-      this.setState = { area: areaName };
-      console.log(this.state.area);
-      console.log(
-        event.feature.getProperty("boundary_id") +
-          " " +
-          event.feature.getProperty("name")
-      );
+      // console.log("WhereToVote -> onMapLoad -> areaName", areaName);
+      // this.setState = { area: areaName };
+      // console.log(this.state.area);
+      // console.log(
+      //   event.feature.getProperty("boundary_id") +
+      //     " " +
+      //     event.feature.getProperty("name")
+      // );
     });
 
     map.data.setStyle({ visible: this.state.showDistrict });
