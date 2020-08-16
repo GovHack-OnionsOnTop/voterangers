@@ -17,7 +17,6 @@ class App extends Component {
       type: "gmapsSelected",
     };
     this.yourCandidates = this.yourCandidates.bind(this);
-    this.electionCommitments = this.electionCommitments.bind(this);
     this.whereToVote = this.whereToVote.bind(this);
     this.whenToVote = this.whenToVote.bind(this);
     this.voterSafety = this.voterSafety.bind(this);
@@ -39,17 +38,9 @@ class App extends Component {
     });
   }
 
-  electionCommitments() {
-    this.setState({
-      selected: 3,
-      title: "electionCommitments",
-      type: "electionCommitments",
-    });
-  }
-
   whereToVote() {
     this.setState({
-      selected: 4,
+      selected: 3,
       title: "whereToVote",
       type: "whereToVote",
     });
@@ -57,7 +48,7 @@ class App extends Component {
 
   whenToVote() {
     this.setState({
-      selected: 5,
+      selected: 4,
       title: "whenToVote",
       type: "whenToVote",
     });
@@ -65,7 +56,7 @@ class App extends Component {
 
   voterSafety() {
     this.setState({
-      selected: 6,
+      selected: 5,
       title: "voterSafety",
       type: "voterSafety",
     });
@@ -75,7 +66,6 @@ class App extends Component {
     let content;
     if (this.state.type === "gmapsSelected") content = <WhereToVote />;
     else if (this.state.type === "yourCandidates") content = <YourCandidates />;
-    else if (this.state.type === "electionCommitments") content = <ElectionCommitments />;
     else if (this.state.type === "whereToVote") content = <WhereToVote />;
     else if (this.state.type === "whenToVote") content = <WhenToVote />;
     else if (this.state.type === "voterSafety") content = <VoterSafety />;
@@ -101,7 +91,7 @@ class App extends Component {
           <div class="collapse navbar-collapse" id="navbarSupportedContent" >
           <ul class="navbar-nav ml-auto">
           &nbsp;
-            <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 1 ? 'active' : '')} onClick={this.whereToVote}>Home</button>	&nbsp;	&nbsp;
+            <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 1 ? 'active' : '')} onClick={this.gmapsSelected}>Home</button>	&nbsp;	&nbsp;
             <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 2 ? 'active' : '')} onClick={this.yourCandidates}>Your Candidates</button>	&nbsp;	&nbsp;
             <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 3 ? 'active' : '')} onClick={this.whereToVote}>Where To Vote</button>	&nbsp;	&nbsp;
             <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 4 ? 'active' : '')} onClick={this.whenToVote}>How To Vote</button>	&nbsp;	&nbsp;

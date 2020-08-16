@@ -224,12 +224,7 @@ class WhereToVote extends Component {
               {!this.state.showCovidSpot ? "Show" : "Hide"} COVID Hotspot{" "}
             </button>
 
-            <GoogleMap
-              mapContainerStyle={containerStyle}
-              center={center}
-              zoom={7}
-              onLoad={this.onMapLoad}
-            >
+            <div className="nav">
               <Autocomplete
                 onLoad={this.onSearchBarLoad}
                 onPlaceChanged={this.onPlacesChanged}
@@ -237,25 +232,16 @@ class WhereToVote extends Component {
                 <input
                   type="text"
                   placeholder="Enter your location"
-                  style={{
-                    boxSizing: `border-box`,
-                    border: `1px solid transparent`,
-                    width: `40%`,
-                    height: `40px`,
-                    padding: `0 12px`,
-                    borderRadius: `3px`,
-                    boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-                    fontSize: `14px`,
-                    outline: `none`,
-                    textOverflow: `ellipses`,
-                    position: "absolute",
-                    top: "3%",
-                    left: "50%",
-                    marginLeft: "-20%",
-                  }}
                 />
               </Autocomplete>
+            </div>
 
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={center}
+              zoom={7}
+              onLoad={this.onMapLoad}
+            >
               {this.state.showPrecinct &&
                 this.state.markers.map((marker, index) => (
                   <Marker
