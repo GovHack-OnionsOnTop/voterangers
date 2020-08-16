@@ -38,6 +38,45 @@ const candidates = {
       ProfilePhotoLink:
         "https://www.abc.net.au/dat/news/elections/wa/2017/guide/photos/PERT_GRN_Milligan.jpg",
     },
+    {
+      Surname: "MOLYNEUX",
+      ChristianName: "Ian",
+      Party: "Julie Matheson for Western Australia",
+      Biography:
+        "Molyneux is the former Chairman of the Heritage Council and a former Fremantle City Architect.",
+      CandidateWebpage: "https://juliematheson.com.au/",
+      ProfilePhotoLink:
+        "https://www.abc.net.au/dat/news/elections/wa/2017/guide/photos/PERT_JMW_Molyneux.jpg",
+    },
+    {
+      Surname: "HYDE",
+      ChristianName: "Archie",
+      Party: "Micro Business Party",
+      Biography:
+        "Hyde was born in New Zealand and arrived in Perth in 1980, He runs a business working as a service provider to the energy and civil infrastructure sectors.",
+      CandidateWebpage:
+        "http://microbusinessparty.org.au/about-mbp/our-candidates/",
+      ProfilePhotoLink:
+        "https://www.abc.net.au/dat/news/elections/wa/2017/guide/photos/PERT_MBP_Hyde.jpg",
+    },
+    {
+      Surname: "LIM",
+      ChristianName: "Ken Ivan",
+      Party: "Australian Christians",
+      ProfilePhotoLink:
+        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fheadtopics.com%2Fsg%2Fivan-lim-saga-pap-s-masagos-says-ge-is-time-for-people-to-redeem-themselves-13926812&psig=AOvVaw0_RVOwGkqRPz4L4qzY2U1e&ust=1597625757053000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOCMj_HBnusCFQAAAAAdAAAAABAD",
+    },
+    {
+      Surname: "EVANGEL",
+      ChristianName: "Eleni",
+      Party: "Liberal Party",
+      Biography:
+        "Evangel has an academic and professional background in education and media and has served as a City of Perth Councillor from 2005 until winning this seat in 2013. She has served on various high profile community committees through her work on the council and is well known from her 15 years working as a presenter, scriptwriter and producer for community and commercial television. Her late father, Tassos Parissis, was one of the first nightclub owners in the Northbridge area and also claims the distinction of opening the first kebab shop in Perth.",
+      CandidateWebpage:
+        "https://www.waliberal.org.au/your-members/your-electorate/",
+      ProfilePhotoLink:
+        "https://www.abc.net.au/dat/news/elections/wa/2017/guide/photos/PERT_LIB_Evangel.jpg",
+    },
   ],
   area2: [
     {
