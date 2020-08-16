@@ -100,12 +100,12 @@ class App extends Component {
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent" >
           <ul class="navbar-nav ml-auto">
+          &nbsp;
             <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 1 ? 'active' : '')} onClick={this.whereToVote}>Home</button>	&nbsp;	&nbsp;
             <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 2 ? 'active' : '')} onClick={this.yourCandidates}>Your Candidates</button>	&nbsp;	&nbsp;
-            {/* <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 3 ? 'active' : '')} onClick={this.electionCommitments}>Election Commitments</button>	&nbsp;	&nbsp; */}
-            <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 4 ? 'active' : '')} onClick={this.whereToVote}>Where To Vote</button>	&nbsp;	&nbsp;
-            <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 5 ? 'active' : '')} onClick={this.whenToVote}>How To Vote</button>	&nbsp;	&nbsp;
-            <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 6 ? 'active' : '')} onClick={this.voterSafety}>Voter Safety</button>	&nbsp;	&nbsp;
+            <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 3 ? 'active' : '')} onClick={this.whereToVote}>Where To Vote</button>	&nbsp;	&nbsp;
+            <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 4 ? 'active' : '')} onClick={this.whenToVote}>How To Vote</button>	&nbsp;	&nbsp;
+            <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 5 ? 'active' : '')} onClick={this.voterSafety}>Voter Safety</button>	&nbsp;	&nbsp;
           </ul>
           </div>
         </nav>
