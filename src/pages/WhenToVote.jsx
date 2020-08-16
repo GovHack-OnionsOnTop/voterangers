@@ -3,7 +3,6 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import earlyVoting from "../data/votingType.js";
 
 const WhenToVote = () => {
-  console.log("earlyVoting", earlyVoting);
   return (
     <div className="container">
       <br />
