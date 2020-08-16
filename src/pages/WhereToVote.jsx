@@ -7,11 +7,11 @@ import {
   Polyline,
   InfoWindow,
   HeatmapLayer,
-  StandaloneSearchBox,
   Autocomplete,
 } from "@react-google-maps/api";
 import candidates from "../data/candidates.js";
 import CandidateCard from "../components/CandidateCard.jsx";
+import elecSummary from '../data/electoral-summary';
 
 const containerStyle = {
   width: "100%",
@@ -166,6 +166,10 @@ class WhereToVote extends Component {
     );
 
     map.data.addListener("click", function (event) {
+      var buf = event.feature.getProperty("name").split(',')
+      var distKey = buf[0].trim().toLowerCase();
+      console.log(distKey, elecSummary[distKey]);
+      /*
       const boundary = event.feature.getProperty("boundary_id") % 2;
       const areaName = boundary === 0 ? "area1" : "area2";
       console.log("WhereToVote -> onMapLoad -> areaName", areaName);
@@ -175,7 +179,7 @@ class WhereToVote extends Component {
         event.feature.getProperty("boundary_id") +
           " " +
           event.feature.getProperty("name")
-      );
+      );*/
     });
 
     map.data.setStyle({ visible: this.state.showDistrict });
