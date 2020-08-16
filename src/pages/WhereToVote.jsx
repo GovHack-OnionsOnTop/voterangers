@@ -9,6 +9,8 @@ import {
   HeatmapLayer,
   StandaloneSearchBox,
 } from "@react-google-maps/api";
+import candidates from "../data/candidates.js";
+import CandidateCard from "../components/CandidateCard.jsx";
 
 const containerStyle = {
   width: "100%",
@@ -46,6 +48,7 @@ class WhereToVote extends Component {
       showPrecinct: true,
       showCovidSpot: true,
       map: null,
+      area: "area1",
     };
 
     this.handleMarkerClick = this.handleMarkerClick.bind(this);
@@ -162,11 +165,14 @@ class WhereToVote extends Component {
     );
 
     map.data.addListener("click", function (event) {
-      const area = event.feature.getProperty("boundary_id") % 2;
-      // setArea();
+      const boundary = event.feature.getProperty("boundary_id") % 2;
+      const areaName = boundary === 0 ? "area1" : "area2";
+      console.log("WhereToVote -> onMapLoad -> areaName", areaName);
+      this.setState = { area: areaName };
+      console.log(this.state.area);
       console.log(
         event.feature.getProperty("boundary_id") +
-          " " + area+
+          " " +
           event.feature.getProperty("name")
       );
     });
@@ -295,6 +301,16 @@ class WhereToVote extends Component {
                 />
               )}
             </GoogleMap>
+
+            <div class="album py-5 bg-light">
+              <div class="container">
+                <div class="row">
+                  {candidates['area1'].map((candidate) => (
+                    <CandidateCard candidate={candidate}></CandidateCard>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </div>
