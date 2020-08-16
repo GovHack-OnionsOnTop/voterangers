@@ -198,7 +198,11 @@ class WhereToVote extends Component {
     );
 
     map.data.addListener("click", this.onDistrictClickHandler);
-
+    map.data.addListener('mouseover', function(event) {
+      map.data.revertStyle();
+      map.data.overrideStyle(event.feature, {strokeWeight: 6});
+    });
+    
     map.data.setStyle({ visible: this.state.showDistrict });
 
     this.setState({
