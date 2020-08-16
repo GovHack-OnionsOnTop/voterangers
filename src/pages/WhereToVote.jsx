@@ -1,17 +1,23 @@
 /* global google */
-import React, { Component } from 'react';
-import locDetails from '../data/loc-details';
-import { GoogleMap, Marker, Polyline, InfoWindow, HeatmapLayer} from '@react-google-maps/api';
+import React, { Component } from "react";
+import locDetails from "../data/loc-details";
+import {
+  GoogleMap,
+  Marker,
+  Polyline,
+  InfoWindow,
+  HeatmapLayer,
+} from "@react-google-maps/api";
 
 const containerStyle = {
-  width: '100%',
-  height: '100%'
+  width: "100%",
+  height: "100%",
 };
 
 const center = {
   lat: -32.0,
-  lng: 115.0
-}
+  lng: 115.0,
+};
 
 class WhereToVote extends Component {
   constructor() {
@@ -48,7 +54,9 @@ class WhereToVote extends Component {
 
     this.handleShowHideDistricts = this.handleShowHideDistricts.bind(this);
     this.handleShowHidePrecincts = this.handleShowHidePrecincts.bind(this);
-    this.handleShowHideCOVIDHotspots = this.handleShowHideCOVIDHotspots.bind(this);
+    this.handleShowHideCOVIDHotspots = this.handleShowHideCOVIDHotspots.bind(
+      this
+    );
   }
 
   handleMarkerClick(targetMarker) {
@@ -114,8 +122,8 @@ class WhereToVote extends Component {
     this.setState({
       showDistrict: newState,
     });
-    this.state.map.data.setStyle({visible: newState});
-    console.log('Show Districts?', newState);
+    this.state.map.data.setStyle({ visible: newState });
+    console.log("Show Districts?", newState);
   }
 
   handleShowHidePrecincts() {
@@ -123,7 +131,7 @@ class WhereToVote extends Component {
     this.setState({
       showPrecinct: newState,
     });
-    console.log('Show Precinct?', newState);
+    console.log("Show Precinct?", newState);
   }
 
   handleShowHideCOVIDHotspots() {
@@ -131,7 +139,7 @@ class WhereToVote extends Component {
     this.setState({
       showCovidSpot: newState,
     });
-    console.log('Show COVID Hotspot?', newState);
+    console.log("Show COVID Hotspot?", newState);
   }
 
   minMaxLatAndLng(locDetails) {
@@ -144,20 +152,26 @@ class WhereToVote extends Component {
   }
 
   onMapLoad = (map) => {
-		// console.log('map.data: ', map.data)
-		map.data.loadGeoJson('/StateElectoratesCurrentLGATE_069.simplified.geojson')
+    // console.log('map.data: ', map.data)
+    map.data.loadGeoJson(
+      "/StateElectoratesCurrentLGATE_069.simplified.geojson"
+    );
 
-		map.data.addListener('click', function(event) {
-			console.log(event.feature.getProperty('boundary_id')+" "+event.feature.getProperty('name'));
+    map.data.addListener("click", function (event) {
+      console.log(
+        event.feature.getProperty("boundary_id") +
+          " " +
+          event.feature.getProperty("name")
+      );
     });
-    
-    map.data.setStyle({visible: this.state.showDistrict});
+
+    map.data.setStyle({ visible: this.state.showDistrict });
 
     this.setState({
-      map: map
+      map: map,
     });
-  }
-  
+  };
+
   render() {
     const mapCenter = this.minMaxLatAndLng(locDetails.result);
 
@@ -165,56 +179,79 @@ class WhereToVote extends Component {
       <div>
         {this.state.showMap && (
           <div className="map">
+            <button
+              className="btn-hide-Districts"
+              onClick={this.handleShowHideDistricts}
+            >
+              {" "}
+              {!this.state.showDistrict ? "Show" : "Hide"} Districts{" "}
+            </button>
+            <button
+              className="btn-hide-Precincts"
+              onClick={this.handleShowHidePrecincts}
+            >
+              {" "}
+              {!this.state.showPrecinct ? "Show" : "Hide"} Precincts{" "}
+            </button>
+            <button
+              className="btn-hide-Hotspot"
+              onClick={this.handleShowHideCOVIDHotspots}
+            >
+              {" "}
+              {!this.state.showCovidSpot ? "Show" : "Hide"} COVID Hotspot{" "}
+            </button>
+
             <GoogleMap
               mapContainerStyle={containerStyle}
-              center={ center }
+              center={center}
               zoom={7}
               onLoad={this.onMapLoad}
             >
-              {this.state.showPrecinct && this.state.markers.map((marker, index) => (
-                <Marker
-                  key={index}
-                  position={marker.position}
-                  onClick={() => this.handleMarkerClick(marker)}
-                  onMouseOver={() => this.handleMarkerHover(marker)}
-                  onMouseOut={() => this.handleMarkerHide(marker)}
-                >
-                  {marker.showInfo && (
-                    <InfoWindow onCloseClick={() => this.handleMarkerClose(marker)}>
-                      <div id="info-window">
-                        <div>Type: {marker.infoContent.studentsCount}</div>
-                        <div>Address: {marker.infoContent.routesCount}</div>
-                      </div>
-                    </InfoWindow>
-                  )}
-
-                  {marker.hover && (
-                    <InfoWindow onCloseClick={() => this.handleMarkerClose(marker)}>
-                      <div id="info-window">
-                        <div>
-                          Venue: <em>{marker.infoContent.name}</em>
+              {this.state.showPrecinct &&
+                this.state.markers.map((marker, index) => (
+                  <Marker
+                    key={index}
+                    position={marker.position}
+                    onClick={() => this.handleMarkerClick(marker)}
+                    onMouseOver={() => this.handleMarkerHover(marker)}
+                    onMouseOut={() => this.handleMarkerHide(marker)}
+                  >
+                    {marker.showInfo && (
+                      <InfoWindow
+                        onCloseClick={() => this.handleMarkerClose(marker)}
+                      >
+                        <div id="info-window">
+                          <div>Type: {marker.infoContent.studentsCount}</div>
+                          <div>Address: {marker.infoContent.routesCount}</div>
                         </div>
-                      </div>
-                    </InfoWindow>
-                  )}
-                </Marker>
-              ))}
+                      </InfoWindow>
+                    )}
+
+                    {marker.hover && (
+                      <InfoWindow
+                        onCloseClick={() => this.handleMarkerClose(marker)}
+                      >
+                        <div id="info-window">
+                          <div>
+                            Venue: <em>{marker.infoContent.name}</em>
+                          </div>
+                        </div>
+                      </InfoWindow>
+                    )}
+                  </Marker>
+                ))}
               <Polyline path={this.state.coords} />
               {this.state.showCovidSpot && (
-              <HeatmapLayer
-                // optional
-                // onLoad={onLoad}
-                // optional
-                // onUnmount={onUnmount}
-                // required
-                data={[
-                  new google.maps.LatLng(-31.939349, 115.966480),
-                  ]}
-              />)}
+                <HeatmapLayer
+                  // optional
+                  // onLoad={onLoad}
+                  // optional
+                  // onUnmount={onUnmount}
+                  // required
+                  data={[new google.maps.LatLng(-31.939349, 115.96648)]}
+                />
+              )}
             </GoogleMap>
-                <button onClick={ this.handleShowHideDistricts }>  { !this.state.showDistrict ? "Show": "Hide"} Districts </button>
-            <button onClick={ this.handleShowHidePrecincts }>  { !this.state.showPrecinct ? "Show": "Hide"} Precincts </button>
-            <button onClick={ this.handleShowHideCOVIDHotspots }>  { !this.state.showCovidSpot ? "Show": "Hide"} COVID Hotspot </button>
           </div>
         )}
       </div>
