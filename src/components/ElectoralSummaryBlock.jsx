@@ -17,14 +17,6 @@ const ElectoralSummaryBlock = (prop) => {
               <td>{ prop.data.DistrictCode } { prop.data.DistrictName }</td>
             </tr>
             <tr>
-              <td>Average District Enrolment</td>
-              <td>{ prop.data.AverageDistrictEnrolment }</td>
-            </tr>
-            <tr>
-              <td>Deviation From ADE</td>
-              <td>{ prop.data.DeviationFromADE }</td>
-            </tr>
-            <tr>
               <td>Electors In District</td>
               <td>{ prop.data.ElectorsInDistrict }</td>
             </tr>
@@ -35,6 +27,14 @@ const ElectoralSummaryBlock = (prop) => {
             <tr>
               <td>Total</td>
               <td>{ prop.data.Total }</td>
+            </tr>
+            <tr>
+              <td>Deviation From ADE</td>
+              <td>{ prop.data.DeviationFromADE }</td>
+            </tr>
+            <tr>
+              <td>Average District Enrolment</td>
+              <td>{ prop.data.AverageDistrictEnrolment }</td>
             </tr>
           </tbody>
         </table>
