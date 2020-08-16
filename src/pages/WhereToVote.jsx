@@ -285,9 +285,7 @@ class WhereToVote extends Component {
                 />
               )}
             </GoogleMap>
-
-            <div class="album py-5 bg-light">
-              <div class="container"></div>
+              <div class="container">
             </div>
           </div>
         )}
