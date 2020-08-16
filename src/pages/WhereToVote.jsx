@@ -169,7 +169,7 @@ class WhereToVote extends Component {
       var buf = event.feature.getProperty("name").split(',')
       var distKey = buf[0].trim().toLowerCase();
       console.log(distKey, elecSummary[distKey]);
-      /*
+      
       const boundary = event.feature.getProperty("boundary_id") % 2;
       const areaName = boundary === 0 ? "area1" : "area2";
       this.setState = { area: areaName };
@@ -177,7 +177,7 @@ class WhereToVote extends Component {
         event.feature.getProperty("boundary_id") +
           " " +
           event.feature.getProperty("name")
-      );*/
+      );
     });
 
     map.data.setStyle({ visible: this.state.showDistrict });
