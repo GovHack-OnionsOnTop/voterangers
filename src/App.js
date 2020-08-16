@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import GmapsSelected from "./pages/GmapsSelected";
-import GmapsDistrict from "./pages/GmapsDistrict";
 import YourCandidates from "./pages/YourCandidates";
 import ElectionCommitments from "./pages/ElectionCommitments";
 import WhereToVote from "./pages/WhereToVote";
@@ -18,7 +16,6 @@ class App extends Component {
       title: "gmapsSelected",
       type: "gmapsSelected",
     };
-    this.gmapsSelected = this.gmapsSelected.bind(this);
     this.yourCandidates = this.yourCandidates.bind(this);
     this.electionCommitments = this.electionCommitments.bind(this);
     this.whereToVote = this.whereToVote.bind(this);
@@ -103,7 +100,7 @@ class App extends Component {
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent" >
           <ul class="navbar-nav ml-auto">
-            <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 1 ? 'active' : '')} onClick={this.gmapsSelected}>Home</button>	&nbsp;	&nbsp;
+            <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 1 ? 'active' : '')} onClick={this.whereToVote}>Home</button>	&nbsp;	&nbsp;
             <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 2 ? 'active' : '')} onClick={this.yourCandidates}>Your Candidates</button>	&nbsp;	&nbsp;
             {/* <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 3 ? 'active' : '')} onClick={this.electionCommitments}>Election Commitments</button>	&nbsp;	&nbsp; */}
             <button type="button" class={"btn btn-outline-primary " + (this.state.selected === 4 ? 'active' : '')} onClick={this.whereToVote}>Where To Vote</button>	&nbsp;	&nbsp;
